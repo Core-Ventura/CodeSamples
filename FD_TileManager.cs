@@ -36,7 +36,11 @@ namespace FlappyDragon
                 !(dragonController.transform.position.x >= tileSwapper.transform.localPosition.x)) return;
             
             RepositionTileSwapper();
-            spacing = FD_GameMode.instance.difficulty != 0 ? FD_GameMode.instance.currentWorld.spacingCurve.Evaluate(1f) : FD_GameMode.instance.currentWorld.spacingCurve.Evaluate(FD_Tile.difficultyScore / progressionLimit);
+            
+            spacing = FD_GameMode.instance.difficulty != 0 
+                ? FD_GameMode.instance.currentWorld.spacingCurve.Evaluate(1f) 
+                : FD_GameMode.instance.currentWorld.spacingCurve.Evaluate(FD_Tile.difficultyScore / progressionLimit);
+                
             tiles[0].transform.position = new Vector3(tiles[quantity-1].transform.position.x + spacing, 0, 0);
             tiles[0].gameObject.SetActive(false);
             tiles[0].gameObject.SetActive(true);
@@ -98,7 +102,11 @@ namespace FlappyDragon
             for (int i = 0; i < quantity; i++)
             {
                 tiles[i].GetComponent<FD_Tile>().ResetDifficulty();
-                spacing = FD_GameMode.instance.difficulty != 0 ? FD_GameMode.instance.currentWorld.spacingCurve.Evaluate(1f) : FD_GameMode.instance.currentWorld.spacingCurve.Evaluate(FD_Tile.difficultyScore / progressionLimit);
+                
+                spacing = FD_GameMode.instance.difficulty != 0 
+                    ? FD_GameMode.instance.currentWorld.spacingCurve.Evaluate(1f) 
+                    : FD_GameMode.instance.currentWorld.spacingCurve.Evaluate(FD_Tile.difficultyScore / progressionLimit);
+                    
                 Vector3 spawnPosition = new Vector3(dragonController.transform.position.x + initialDistance + spacing * i, 0, 0);
                 tiles[i].transform.position = spawnPosition;
             }
